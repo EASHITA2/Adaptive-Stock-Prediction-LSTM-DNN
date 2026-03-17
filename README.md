@@ -139,8 +139,9 @@ DNN significantly improves prediction accuracy over traditional models by captur
 ### 📸 Results
 
 ```markdown
-![DNN Forecast](2_Deep_Learning_Models/dnn_forecast.png)
-![DNN Metrics](2_Deep_Learning_Models/dnn_metrics.png)
+![DNN Forecast](dnn_forecast.png)
+![DNN Metrics](dnn_metrics.png)
+
 ```
 ## 🔹 LSTM Model (Long Short-Term Memory)
 
