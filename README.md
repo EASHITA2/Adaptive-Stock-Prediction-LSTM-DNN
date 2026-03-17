@@ -540,59 +540,69 @@ The **Adaptive LSTM-DNN model**:
 - Trading decision support  
 - Real-time financial systems  
 
-# 🌐 Stock Prediction Web Application
+---
 
-This module provides a real-time interactive web application for stock price prediction and trading decision support.
+## 🌐 Web Application
+
+The project includes a **real-time interactive web application** built using Streamlit for stock prediction and analysis.
 
 ---
 
-## 📸 Web App Interface
+### 📸 Web App Interface
 
-![Web App UI](webapp_ui.png)
-
----
-
-## ⚙️ Features
-
-- 📈 Real-time stock data
-- 📊 Interactive charts (Plotly)
-- 🔍 Custom stock selection
-- 📉 Forecast visualization
-- 📊 Performance metrics display
-- 🤖 AI-based trading signals
+![Web App UI](4_Web_App/webapp_ui.png)
 
 ---
 
-## 📸 Prediction Output
+### ⚙️ Features
 
-![Prediction Output](prediction_output.png)
+- 📈 Real-time stock data using APIs  
+- 📊 Interactive candlestick charts  
+- 🔍 Custom stock selection (RELIANCE, TCS, INFY, etc.)  
+- 📉 Forecast visualization (Actual vs Predicted)  
+- 📊 Performance metrics (R², MAE, MSE, RMSE, MAPE)  
+- 📌 Directional Accuracy  
+- 🤖 AI-based trading recommendations  
 
+---
+
+### 📸 Prediction Output
+
+![Prediction Output](4_Web_App/prediction_output.png)
+
+---
 
 ## 💰 BUY / SELL / HOLD Logic
 
-The model uses dual prediction:
+The system uses a **dual-output prediction approach**:
 
-- **Direction Probability (`dir_prob`)**
-- **Predicted Return (`pred_logret`)**
-
-
-### 📌 Decision Rules
-
-- 🟢 BUY → `dir_prob > T` AND `pred_logret > 0`
-- 🔴 SELL → `dir_prob < (1 - T)` AND `pred_logret < 0`
-- 🟡 HOLD → Otherwise
+- `dir_prob` → Probability of price moving UP  
+- `pred_logret` → Predicted return (magnitude + direction)  
 
 ---
 
-## 📸 Trading Signal
+### 📌 Decision Rules
 
-![Trading Signal](buy_sell_signal.png)
+- 🟢 **BUY**
+  - `dir_prob > T` AND `pred_logret > 0`
+
+- 🔴 **SELL**
+  - `dir_prob < (1 - T)` AND `pred_logret < 0`
+
+- 🟡 **HOLD**
+  - When predictions conflict OR confidence is low  
 
 
-## 💡 Key Insight
+### ⚙️ Adaptive Threshold
 
-The system ensures reliable predictions by requiring agreement between classification and regression outputs, reducing false trading signals.
+- Threshold **T is tuned (0.30 – 0.70)** per stock  
+- Adjusts for:
+  - Volatility  
+  - Market conditions  
 
+### 📸 Trading Signal Output
+
+![Trading Signal](4_Web_App/buy_sell_signal.png)
 
 ## 🛠️ Tech Stack
 
