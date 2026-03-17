@@ -138,11 +138,11 @@ DNN significantly improves prediction accuracy over traditional models by captur
 
 ### 📸 Results
 
-```markdown
-![DNN Forecast](dnn_forecast.png)
-![DNN Metrics](dnn_metrics.png)
 
-```
+![DNN Forecast](2_Deep_Learning_Models/dnn_forecast.png)
+![DNN Metrics](2_Deep_Learning_Models/dnn_metrics.png)
+
+
 ## 🔹 LSTM Model (Long Short-Term Memory)
 
 
@@ -232,10 +232,10 @@ LSTM effectively models time-series dependencies but suffers from lag and incons
 
 ### 📸 Results
 
-```markdown
+
 ![LSTM Forecast](2_Deep_Learning_Models/lstm_forecast.png)
 ![LSTM Metrics](2_Deep_Learning_Models/lstm_metrics.png)
-```
+
 
 
 
