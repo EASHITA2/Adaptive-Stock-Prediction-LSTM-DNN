@@ -552,7 +552,9 @@ The project includes a **real-time interactive web application** built using Str
 
 ![Web App UI](4_Web_App/webapp_ui.png)
 
----
+📊 Candlestick Chart
+
+![Candlestick Chart](4_Web_App/candlestick_chart.png)
 
 ### ⚙️ Features
 
