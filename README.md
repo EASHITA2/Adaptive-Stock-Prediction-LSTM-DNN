@@ -408,7 +408,7 @@ Stock market prediction is challenging due to:
 ### 🔹 Model Architecture
 ## 🧠 Model Architecture (Incremental Learning + Sliding Window)
 
-![Architecture](methodology.png)
+![Architecture](3_Proposed_Model/methodology.png)
 
 The proposed model integrates LSTM and DNN with incremental learning and a sliding window approach to enable real-time adaptability.
 
@@ -473,8 +473,7 @@ The proposed model integrates LSTM and DNN with incremental learning and a slidi
 ## 📸 Results
 
 
-![Incremental Metrics](lstm_dnn_incremental_metrics.png)
-
+![Incremental Metrics](3_Proposed_Model/lstm_dnn_incremental_metrics.png)
 
 ## 📊 Performance Summary
 
