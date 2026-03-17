@@ -236,6 +236,120 @@ LSTM effectively models time-series dependencies but suffers from lag and incons
 ![LSTM Forecast](2_Deep_Learning_Models/lstm_forecast.png)
 ![LSTM Metrics](2_Deep_Learning_Models/lstm_metrics.png)
 
+## 🔥 Proposed Model: LSTM–DNN Hybrid
+
+---
+
+### ⚙️ Methodology
+
+* **Data Collection:**
+  Three-year OHLCV data for RELIANCE.NS, TCS.NS, and INFY.NS fetched using `yfinance`
+
+* **Feature Engineering:**
+  Technical indicators generated using `pandas_ta`:
+
+  * EMA (20)
+  * RSI (14)
+  * MACD (12,26,9)
+  * MACD Signal
+
+  Final features:
+
+  ```
+  Open, High, Low, Close, Volume, EMA_20, RSI_14, MACD, MACD Signal
+  ```
+
+* **Preprocessing:**
+
+  * MinMaxScaler normalization
+  * Chronological split (80% train, 20% test)
+  * Target: Closing Price
+
+---
+
+### 🧱 Model Architecture
+
+The hybrid model combines **temporal learning (LSTM)** and **nonlinear learning (DNN)**:
+
+#### 🔹 LSTM Block
+
+* LSTM layers: **128 → 64 units**
+* Dropout: **0.3, 0.2**
+
+#### 🔹 DNN Block
+
+* Dense layers: **128 → 64 neurons**
+* Activation: **LeakyReLU**
+* Dropout applied
+
+#### 🔹 Output Layer
+
+* Dense(1) → predicts closing price
+
+* Optimizer: **Adam (lr = 0.001)**
+
+* Loss Function: **Huber Loss**
+
+* EarlyStopping applied
+
+
+
+### 📊 Performance (Best Model 🔥)
+
+| Stock    | R² Score  |
+| -------- | --------- |
+| RELIANCE | **0.982** |
+| TCS      | **0.975** |
+| INFY     | **0.964** |
+
+* **Lowest MSE across all models**
+* High consistency and stability
+* Strong generalization across stocks
+
+
+
+### 🔍 Inference
+
+* Captures both:
+
+  * **Temporal dependencies** (via LSTM)
+  * **Nonlinear relationships** (via DNN)
+
+* Key Observations:
+
+  * Predictions closely follow actual prices
+  * Accurately captures trends and short-term fluctuations
+  * Handles both stable and volatile markets effectively
+  * Reacts quickly to market changes with minimal lag
+  * Maintains high accuracy across all stocks
+
+* Performance Insights:
+
+  * RELIANCE & INFY → most stable predictions (low MSE)
+  * TCS → handles volatility better than other models
+
+👉 **Conclusion:**
+The LSTM–DNN hybrid model significantly outperforms ARIMA, GARCH, DNN, and LSTM by combining their strengths, resulting in highly accurate, stable, and adaptive stock price predictions.
+
+---
+
+### 📸 Results
+
+![Hybrid Forecast](3_Proposed_Model/lstm_dnn_forecast.png)
+![Hybrid Metrics](3_Proposed_Model/lstm_dnn_metrics.png)
+
+---
+
+## 🚀 Final Takeaway
+
+* Traditional Models → ❌ Limited
+* DNN → ✅ Nonlinear
+* LSTM → ✅ Temporal
+* **LSTM-DNN → 🔥 Best (Combined Power)**
+
+👉 Recommended for real-world stock prediction systems.
+
+
 
 
 
