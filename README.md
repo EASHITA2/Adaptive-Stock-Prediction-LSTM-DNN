@@ -540,8 +540,66 @@ The **Adaptive LSTM-DNN model**:
 - Trading decision support  
 - Real-time financial systems  
 
+# 🌐 Stock Prediction Web Application
+
+This module provides a real-time interactive web application for stock price prediction and trading decision support.
+
 ---
 
+## 📸 Web App Interface
+
+![Web App UI](webapp_ui.png)
+
+---
+
+## ⚙️ Features
+
+- 📈 Real-time stock data
+- 📊 Interactive charts (Plotly)
+- 🔍 Custom stock selection
+- 📉 Forecast visualization
+- 📊 Performance metrics display
+- 🤖 AI-based trading signals
+
+---
+
+## 📸 Prediction Output
+
+![Prediction Output](prediction_output.png)
+
+
+## 💰 BUY / SELL / HOLD Logic
+
+The model uses dual prediction:
+
+- **Direction Probability (`dir_prob`)**
+- **Predicted Return (`pred_logret`)**
+
+
+### 📌 Decision Rules
+
+- 🟢 BUY → `dir_prob > T` AND `pred_logret > 0`
+- 🔴 SELL → `dir_prob < (1 - T)` AND `pred_logret < 0`
+- 🟡 HOLD → Otherwise
+
+---
+
+## 📸 Trading Signal
+
+![Trading Signal](buy_sell_signal.png)
+
+
+## 💡 Key Insight
+
+The system ensures reliable predictions by requiring agreement between classification and regression outputs, reducing false trading signals.
+
+
+## 🛠️ Tech Stack
+
+- Streamlit
+- Plotly
+- TensorFlow / Keras
+- Pandas, NumPy
 ## 🛠️ Tech Stack
 
 * Python
