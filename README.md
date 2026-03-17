@@ -348,12 +348,201 @@ The LSTM–DNN hybrid model significantly outperforms ARIMA, GARCH, DNN, and LST
 * **LSTM-DNN → 🔥 Best (Combined Power)**
 
 👉 Recommended for real-world stock prediction systems.
+# 🚀 Proposed Model: Adaptive LSTM-DNN (Incremental Learning + Sliding Window)
+
+---
+
+## 🎯 Problem Statement
+
+Stock market prediction is challenging due to:
+
+- Nonlinear and non-stationary nature of financial data  
+- High volatility and sudden market shifts  
+- Limitations of static models that do not adapt to new data  
+
+👉 To solve this, we propose an **adaptive hybrid LSTM-DNN model** with:
+- Incremental Learning  
+- Sliding Window Mechanism  
+
+📌 Based on final implementation: :contentReference[oaicite:0]{index=0}
+
+---
+
+## 💡 Key Contribution
+
+- Hybrid **LSTM + DNN architecture**
+- **Incremental learning** for real-time updates
+- **Sliding window (60 days optimal)** for trend capture
+- Dual prediction:
+  - Price prediction (Regression)
+  - Direction prediction (Classification)
+
+---
+
+## ⚙️ Methodology
+
+### 🔹 Data Collection
+- 3+ years OHLCV data using `yfinance`
+- Stocks: RELIANCE, TCS, INFY + indices (NIFTY, SENSEX)
+
+---
+
+### 🔹 Feature Engineering
+- 30+ features including:
+  - EMA (9, 21, 50)
+  - RSI (14)
+  - MACD + Signal + Histogram
+  - Bollinger Bands
+  - ATR, volatility, momentum indicators
+  - Log returns, trend strength, streak, divergence
+
+---
+
+### 🔹 Preprocessing
+- MinMax / Robust Scaling
+- Chronological split (80% train, 20% test)
+- Sliding window: **60 days (optimal)**
+
+---
+
+### 🔹 Model Architecture
+## 🧠 Model Architecture (Incremental Learning + Sliding Window)
+
+![LSTM-DNN Architecture](architecture.png)
+
+The proposed model integrates LSTM and DNN with incremental learning and a sliding window approach to enable real-time adaptability.
 
 
+#### 🧠 Hybrid LSTM-DNN
+
+- **LSTM Layers**
+  - 96 → 64 units
+  - Captures temporal dependencies
+
+- **DNN Layers**
+  - 128 → 64 units
+  - Learns nonlinear relationships
+
+- **Dual Output Heads**
+  - Regression → Next-day price
+  - Classification → Direction (Up/Down)
+
+---
+
+### 🔹 Training Strategy
+
+- **Loss Functions**
+  - Huber Loss (Regression)
+  - Focal Loss (Direction)
+
+- **Loss Weighting**
+  - Direction prioritized (1 : 4 ratio)
+
+- EarlyStopping + Gradient Clipping
+
+---
+
+### 🔹 Sliding Window 📊
+
+- Uses last **60 days data**
+- Best balance:
+  - Accuracy ✅
+  - Stability ✅
+  - Responsiveness ✅
+
+### 🔹 Incremental Learning 🔄
+
+- Model **updates continuously**
+- Retrained on **latest window only**
+- No full retraining required
+
+👉 Handles:
+- Concept drift  
+- Changing market trends  
 
 
+### 🔹 Evaluation Strategy
+
+- Walk-forward validation (no leakage)
+- Metrics:
+  - R² Score
+  - MAE, MSE, RMSE, MAPE
+  - Directional Accuracy
 
 
+## 📸 Results
+
+![Hybrid Forecast](lstm_dnn_forecast.png)  
+![Hybrid Metrics](lstm_dnn_metrics.png)
+
+---
+
+## 📊 Performance Summary
+
+| Metric | Performance |
+|------|------------|
+| R² Score | **0.93 – 0.99** |
+| Directional Accuracy | **68% – 85%** |
+| RMSE | Low across stocks |
+| MAE | Stable and minimal |
+
+---
+
+## 🔍 Inference
+
+- ✅ **Very high model accuracy** across all stocks  
+- ✅ Strong performance on:
+  - SBI (highest R² ~0.989)
+  - Infosys (best direction ~85%)  
+
+- ✅ Captures:
+  - Nonlinear patterns  
+  - Temporal dependencies  
+
+- ✅ Works across:
+  - Indices (NIFTY, SENSEX)  
+  - IT stocks (TCS, INFY)  
+  - Banking (SBI, Axis Bank)  
+
+- ✅ Stable predictions with low RMSE and MAE  
+
+- ⚠️ Minor limitation:
+  - Slight delay during extreme volatility spikes  
+
+---
+
+## 💡 Key Advantages
+
+- Real-time adaptability (incremental learning)  
+- Strong short-term trend capture (sliding window)  
+- High directional accuracy → trading usefulness  
+- Generalizes across multiple stocks  
+
+---
+
+## 🔥 Final Conclusion
+
+The **Adaptive LSTM-DNN model**:
+
+- Outperforms:
+  - ARIMA
+  - GARCH
+  - DNN
+  - LSTM
+  - CNN-LSTM
+  - BiLSTM-Transformer  
+
+- Provides:
+  - Accurate predictions  
+  - Stable performance  
+  - Real-time adaptability  
+
+👉 Suitable for:
+- Stock forecasting  
+- Trading decision support  
+- Real-time financial systems  
+
+---
 
 ## 🛠️ Tech Stack
 
@@ -363,9 +552,7 @@ The LSTM–DNN hybrid model significantly outperforms ARIMA, GARCH, DNN, and LST
 * ARCH (GARCH)
 * Scikit-learn
 * Plotly
-
----
-
+  
 ## 👩‍💻 Author
 
 Eashita Prabhudesai
