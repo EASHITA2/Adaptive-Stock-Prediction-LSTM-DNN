@@ -472,10 +472,9 @@ The proposed model integrates LSTM and DNN with incremental learning and a slidi
 
 ## 📸 Results
 
-![Hybrid Forecast](lstm_dnn_forecast.png)  
-![Hybrid Metrics](lstm_dnn_metrics.png)
 
----
+![Hybrid Metrics](lstm_dnn_incremental_mertics.png)
+
 
 ## 📊 Performance Summary
 
