@@ -606,6 +606,17 @@ The system uses a **dual-output prediction approach**:
 
 ![Trading Signal](4_Web_App/buy_sell_signal.png)
 
+## ⚠️ Experimental Models (Not Included)
+
+BiLSTM-Transformer and CNN-LSTM architectures were explored during experimentation.
+
+However, due to limited dataset size (~3 years), these models showed:
+- Overfitting
+- Unstable predictions
+- Lower consistency
+
+👉 Hence, they were excluded from final comparison.
+
 ## 🛠️ Tech Stack
 
 - Streamlit
